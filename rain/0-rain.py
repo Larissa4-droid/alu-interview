@@ -4,6 +4,7 @@
 Module to calculate trapped rainwater between walls.
 """
 
+
 def rain(walls):
     if not walls or len(walls) < 3:
         return 0

@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+0-rain
+Module to calculate trapped rainwater between walls.
+"""
+
 def rain(walls):
     if not walls or len(walls) < 3:
         return 0
@@ -7,20 +12,16 @@ def rain(walls):
     left_max = [0] * n
     right_max = [0] * n
 
-    # Fill left max array
     left_max[0] = walls[0]
     for i in range(1, n):
         left_max[i] = max(left_max[i - 1], walls[i])
 
-    # Fill right max array
     right_max[n - 1] = walls[n - 1]
     for i in range(n - 2, -1, -1):
         right_max[i] = max(right_max[i + 1], walls[i])
 
-    # Calculate trapped water
     trapped = 0
     for i in range(n):
         trapped += min(left_max[i], right_max[i]) - walls[i]
 
     return trapped
-
